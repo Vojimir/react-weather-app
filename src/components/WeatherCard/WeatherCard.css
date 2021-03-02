@@ -26,6 +26,27 @@ body {
   top: 0;
   left: 0;
 }
+.iconImage {
+  background-position: center;
+  background-size: 150px;
+  width: 180px;
+  height: 150px;
+}
+.clear {
+  background-image: url("../../icons/clear.png");
+}
+.rain {
+  background-image: url("../../icons/rain.png");
+}
+.clouds {
+  background-image: url("../../icons/clouds.png");
+}
+.snow {
+  background-image: url("../../icons/snow.png");
+}
+.thunder {
+  background-image: url("../../icons/thunder.png");
+}
 .currentWeather {
   width: 180px;
   height: 200px;
@@ -42,6 +63,13 @@ body {
   font-weight: 300;
   color: rgb(255, 255, 255);
   padding: 20px 0 0;
+}
+.description {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-weight: 700;
+  display: block;
+  text-transform: uppercase;
 }
 .location {
   color: rgb(255, 255, 255);

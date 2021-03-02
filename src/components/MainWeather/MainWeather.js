@@ -9,6 +9,8 @@ class MainWeather extends Component {
     windSpeed: null,
     city: null,
     weatherDescription: null,
+    weatherId: null,
+    weatherIcon: null,
     units: "metric",
     windUnits: "M/S",
     errors: null,
@@ -20,16 +22,21 @@ class MainWeather extends Component {
         `https://api.openweathermap.org/data/2.5/weather?id=789128&units=${units}&appid=38f4a841f86814f23ddee9d9f130fd77`
       )
       .then((response) => {
-        this.setState({
-          temperature: response.data.main.temp,
-          humidity: response.data.main.humidity,
-          windSpeed: response.data.wind.speed,
-          city: response.data.name,
-          weatherDescription: response.data.weather[0].main,
-          units,
-          windUnits: units === "metric" ? "M/S" : "MPH",
-        });
+        this.setState(
+          {
+            temperature: response.data.main.temp,
+            humidity: response.data.main.humidity,
+            windSpeed: response.data.wind.speed,
+            city: response.data.name,
+            weatherDescription: response.data.weather[0].main,
+            weatherId: response.data.weather[0].id,
+            units,
+            windUnits: units === "metric" ? "M/S" : "MPH",
+          },
+          this.weatherIconHandler(response.data.weather[0].id)
+        );
       })
+
       .catch((e) => {
         this.setState({ errors: e });
       });
@@ -37,10 +44,28 @@ class MainWeather extends Component {
 
   componentDidMount() {
     this.fetchData();
+    this.weatherIconHandler();
   }
 
   toggleMeasurementUnit = () => {
     this.fetchData(this.state.units === "metric" ? "imperial" : "metric");
+  };
+  weatherIconHandler = (weatherId = this.state.weatherId) => {
+    const idNumber = weatherId;
+    let iconId = null;
+    if (idNumber >= 800) {
+      iconId = "clouds";
+    } else if (idNumber >= 600 && idNumber < 800) {
+      iconId = "snow";
+    } else if (idNumber >= 500 && idNumber < 600) {
+      iconId = "rain;";
+    } else if (idNumber >= 200 && idNumber < 300) {
+      iconId = "thunder;";
+    } else {
+      iconId = "clear";
+    }
+
+    this.setState({ weatherIcon: iconId });
   };
   render() {
     return (
@@ -51,6 +76,7 @@ class MainWeather extends Component {
         windSpeed={this.state.windSpeed}
         weatherDesc={this.state.weatherDescription}
         windUnits={this.state.windUnits}
+        weatherIcon={this.state.weatherIcon}
         clicked={this.toggleMeasurementUnit}
       ></WeatherCard>
     );

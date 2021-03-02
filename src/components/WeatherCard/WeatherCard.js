@@ -7,10 +7,11 @@ const weatherCard = (props) => {
       <div className="weatherCard">
         <div className="currentTemp">
           <span className="temp">{props.temp}&deg;</span>
+          <span className="description">{props.weatherDesc}</span>
           <span className="location">{props.city}</span>
         </div>
         <div className="currentWeather">
-          <span className="conditions">&#xf00d;</span>
+          <div className={`iconImage ${props.weatherIcon}`}></div>
           <div className="info">
             <span className="rain">{props.humidity} %</span>
             <span className="wind">
