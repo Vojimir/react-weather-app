@@ -1,7 +1,13 @@
-import logo from "./logo.svg";
+import React, { Component } from "react";
+import MainWeather from "./components/MainWeather/MainWeather";
 
-function App() {
-  return <div className="App"></div>;
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <MainWeather />
+      </div>
+    );
+  }
 }
-
 export default App;
