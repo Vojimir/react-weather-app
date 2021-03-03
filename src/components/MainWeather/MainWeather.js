@@ -44,7 +44,6 @@ class MainWeather extends Component {
 
   componentDidMount() {
     this.fetchData();
-    this.weatherIconHandler();
   }
 
   toggleMeasurementUnit = () => {
