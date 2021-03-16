@@ -1,0 +1,43 @@
+.inputWrapper {
+  width: 400px;
+  margin: 100px auto;
+}
+.inputField {
+  display: block;
+  width: 80%;
+  margin: auto;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  background: olivedrab;
+  opacity: 60%;
+  color: white;
+  border-radius: 25px;
+  font-size: 16px;
+}
+.inputField:focus {
+  outline: orangered;
+  opacity: 100%;
+  border: 1px orangered;
+}
+::placeholder {
+  color: orange;
+}
+input:focus::placeholder {
+  color: transparent;
+}
+.submitButton {
+  width: 100px;
+  margin: 20px auto;
+  display: block;
+  border: none;
+  padding: 10px;
+  outline: none;
+  background: gray;
+  color: white;
+  border-radius: 25px;
+}
+.submitButton:active {
+  outline: none;
+  background: rgb(41, 41, 41);
+}
