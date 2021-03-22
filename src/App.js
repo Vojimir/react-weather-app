@@ -1,13 +1,6 @@
-import React, { Component } from "react";
-import MainWeather from "./components/MainWeather/MainWeather";
+import Weather from "./components/Weather";
+const App = () => {
+  return <Weather />;
+};
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <MainWeather />
-      </div>
-    );
-  }
-}
 export default App;
