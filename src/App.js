@@ -1,6 +1,6 @@
 import Weather from "./components/Weather";
-function App() {
+const App = () => {
   return <Weather />;
-}
+};
 
 export default App;
