@@ -4,16 +4,25 @@ import WeatherCard from "./WeatherCard";
 import CityInputField from "./CityInputField";
 import ErrorModal from "./UI/errorModal";
 import "./Weather.css";
-const Weather = () => {
-  const { data, errors, setUrl } = useFetchApiData(null);
+
+const Weather: React.FC = () => {
+  const {
+    data,
+    errors,
+    setUrl,
+  }: {
+    data: any;
+    errors: string | null;
+    setUrl: (url: string | null) => void;
+  } = useFetchApiData();
   const [units, setUnits] = useState("metric");
   const [windUnits, setWindUnits] = useState("M/S");
   const [tempUnicode, setTempUnicode] = useState("C");
-  const [city, setCity] = useState(null);
+  const [city, setCity] = useState<string | null>(null);
   const [weatherIcon, setWeatherIcon] = useState("clear");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const searchHandler = (city) => {
+  const searchHandler = (city: string) => {
     setCity(city);
     setUrl(
       `/data/2.5/weather?q=${city}&appid=38f4a841f86814f23ddee9d9f130fd77&units=${units}`
@@ -44,7 +53,7 @@ const Weather = () => {
 
   const weatherIconHandler = () => {
     if (data) {
-      const idNumber = 500;
+      const idNumber = data.weather[0].id;
       let weatherIcon = null;
       if (idNumber >= 800) {
         weatherIcon = "clouds";
@@ -57,6 +66,7 @@ const Weather = () => {
       } else {
         weatherIcon = "clear";
       }
+
       setWeatherIcon(weatherIcon);
     }
   };

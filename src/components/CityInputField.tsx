@@ -1,6 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./CityInputField.css";
-const CityInputField = (props) => {
+
+interface Props {
+  onSearch: (city: string) => void;
+}
+const CityInputField: React.FC<Props> = (props: Props) => {
   const [city, setCity] = useState("");
 
   return (

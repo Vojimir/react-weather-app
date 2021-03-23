@@ -1,7 +1,11 @@
 import React from "react";
 import "./errorModal.css";
+interface Props {
+  onClose: () => void;
+  children: string;
+}
 
-const ErrorModal = (props) => {
+const ErrorModal: React.FC<Props> = (props: Props) => {
   return (
     <>
       <div className="backdrop" onClick={props.onClose} />
