@@ -1,5 +1,5 @@
 import Weather from "./components/Weather";
-const App = () => {
+const App: React.FC = () => {
   return <Weather />;
 };
 
